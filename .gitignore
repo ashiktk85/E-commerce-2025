@@ -1,0 +1,45 @@
+# Node modules
+node_modules/
+
+# Build output
+dist/
+build/
+out/
+
+# Environment variable files
+.env
+.env.* 
+
+# Local logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor folders
+.vscode/
+.idea/
+*.sublime-workspace
+*.sublime-project
+
+# Misc
+coverage/
+*.tsbuildinfo
+
+# Optional: lock specific artifact files
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# Test
+__tests__/
+*.test.ts
+*.spec.ts
+
+# Ignore Mac/Linux hidden files, VSCode launch configs, etc.
+*.swp
+*.bak
+*.tmp
