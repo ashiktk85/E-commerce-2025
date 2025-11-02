@@ -7,7 +7,8 @@ export interface IUser extends Document {
   provider: string;       
   verified: boolean;      
   otp?: string;            
-  otpExpiry?: Date;       
+  otpExpiry?: Date;  
+  refreshToken?: string;     
 }
 
 
@@ -19,6 +20,7 @@ const userSchema = new Schema<IUser>({
   verified:  { type: Boolean, default: false },  
   otp:       { type: String },    
   otpExpiry: { type: Date },     
+  refreshToken: { type: String },     
 }, { timestamps: true });
 
 export default model<IUser>("User", userSchema);

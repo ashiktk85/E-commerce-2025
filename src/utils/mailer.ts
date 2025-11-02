@@ -2,10 +2,6 @@ import nodemailer from "nodemailer";
 import dotenv from "dotenv";
 dotenv.config();
 
-console.log("SMTP_EMAIL:", process.env.SMTP_EMAIL);
-console.log("SMTP_PASSWORD:", !!process.env.SMTP_PASSWORD); // log if password is set (true/false)
-
-
 const transporter = nodemailer.createTransport({
   service: "gmail",
   host: "smtp.gmail.com",

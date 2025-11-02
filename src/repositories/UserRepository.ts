@@ -19,4 +19,10 @@ export class UserRepository {
       "-password"
     );
   }
+  async updateUser(id: string, userData: Partial<IUser>): Promise<void> {
+    await User.findByIdAndUpdate(id, userData);
+  }
+  async findById(id: string): Promise<IUser | null> {
+    return await User.findById(id).select("-password")  ;
+  }
 }
