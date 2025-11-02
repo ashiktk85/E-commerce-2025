@@ -2,6 +2,7 @@ import * as bcrypt from "bcryptjs";
 import * as jwt from "jsonwebtoken";
 import { validateRegistrationInput } from "../config/loginValidation.js";
 import { generateOTP } from "../config/otp.js";
+import { sendOTPEmail } from "../utils/mailer.js";
 export class AuthService {
     constructor(userRepo) {
         this.userRepo = userRepo;
@@ -26,6 +27,7 @@ export class AuthService {
             otp,
             otpExpiry,
         });
+        await sendOTPEmail(email, otp);
         return {
             success: true,
             message: "Registration successful! Please verify your email/OTP to activate your account."

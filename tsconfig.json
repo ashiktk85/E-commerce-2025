@@ -2,9 +2,9 @@
   "compilerOptions": {
     "rootDir": "./src",
     "outDir": "./dist",
-    "module": "ESNext",
-    "target": "ES2017",
-    "lib": ["esnext"],
+    "module": "eSNext",
+    "target": "eS2017",
+    "lib": ["eSnext"],
     "types": ["node"],
     "sourceMap": true, 
     "allowSyntheticDefaultImports": true,

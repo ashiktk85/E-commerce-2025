@@ -3,6 +3,7 @@ import * as jwt from "jsonwebtoken";
 import type { UserRepository } from "../repositories/UserRepository.js";
 import { validateRegistrationInput } from "../config/loginValidation.js";
 import { generateOTP } from "../config/otp.js";
+import { sendOTPEmail } from "../utils/mailer.js";
 
 export class AuthService {
   constructor(private userRepo: UserRepository) {}
@@ -29,6 +30,8 @@ export class AuthService {
       otp,
       otpExpiry,
     });
+
+    await sendOTPEmail(email, otp);
 
     return {
       success: true,
