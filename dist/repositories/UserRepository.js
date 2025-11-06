@@ -16,5 +16,11 @@ export class UserRepository {
     async findByEmail(email) {
         return await User.findOne({ email: email.toLowerCase() }).select("-password");
     }
+    async updateUser(id, userData) {
+        await User.findByIdAndUpdate(id, userData);
+    }
+    async findById(id) {
+        return await User.findById(id).select("-password");
+    }
 }
 //# sourceMappingURL=UserRepository.js.map

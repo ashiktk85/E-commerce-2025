@@ -5,12 +5,12 @@ import { validateRegistrationInput } from "../config/loginValidation.js";
 import { generateOTP } from "../config/otp.js";
 import { sendOTPEmail } from "../utils/mailer.js";
 import type { IUser } from "../models/User.js";
-import { generateAccessToken, generateRefreshToken, verifyRefreshToken } from "../utils/jwtValidation.js";
+import { generateAccessToken, generateRefreshToken, verifyRefreshToken } from "../utils/jwtAuth.js";
 
 export class AuthService {
   constructor(private userRepo: UserRepository) {}
 
-  async register(name: string, email: string, password: string) {
+  async register(firstName: string,lastName:string, email: string, password: string) {
     const validationResult = validateRegistrationInput(email, password);
     if (!validationResult.valid) {
       throw new Error(validationResult.message || "Invalid input");
@@ -24,7 +24,8 @@ export class AuthService {
     const otpExpiry = new Date(Date.now() + 10 * 60 * 500);
 
     await this.userRepo.createUser({
-      name,
+      firstName,
+      lastName,
       email,
       password: password,
       provider: "local",

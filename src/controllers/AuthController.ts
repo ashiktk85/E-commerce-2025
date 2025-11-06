@@ -8,12 +8,13 @@ export class AuthController {
 
   async register(req: Request, res: Response, next: NextFunction) {
     try {
-      const { name, email, password } = req.body;
-      if (!name || !email || !password) {
+      const { firstName, lastName, email, password } = req.body;
+      if (!firstName || !lastName || !email || !password) {
         return res.status(400).json({ message: "All fields required" });
       }
-    
-      const result = await this.authService.register(name, email, password);
+      console.log(req.body, "bodyy");
+      
+      const result = await this.authService.register(firstName,lastName, email, password);
       return res.json(result);
     } catch (err: any) {
       return next(new AppError(err.message, 400)); 

@@ -12,16 +12,19 @@ const app = express();
 
 app.use(express.json());
 app.use(morgan("dev"))
-app.use(cors());
+app.use(cors({
+  origin: 'http://localhost:5173', 
+  credentials: true,               
+}));
 // app.use(passport.initialize());
 
 // Routes
 app.use("/auth", authRouter);
 
-// Error Handling Middleware (should be after all routes)
+
 app.use(errorMiddleware);
 
-// Database connection & Server start
+
 const MONGO_URI = process.env.MONGO_URI || "";
 const PORT = process.env.PORT || 5000;
 

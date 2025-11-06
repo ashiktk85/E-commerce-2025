@@ -1,12 +1,14 @@
 import { Document } from "mongoose";
 export interface IUser extends Document {
-    name: string;
+    firstName: string;
+    lastName: string;
     email: string;
     password: string;
     provider: string;
     verified: boolean;
     otp?: string;
     otpExpiry?: Date;
+    refreshToken?: string;
 }
 declare const _default: import("mongoose").Model<IUser, {}, {}, {}, Document<unknown, {}, IUser, {}, {}> & IUser & Required<{
     _id: unknown;
